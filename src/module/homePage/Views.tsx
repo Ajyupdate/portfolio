@@ -6,28 +6,38 @@ import Header from "./components/Navbar";
 const MotionBox = motion(Box);
 export default function HomePage() {
   const [isToggled, setIsToggled] = useState(false);
-  const name = "Ajibade Emmanuel";
+  const text = "I build exciting stuffs for the web.";
   return (
     <Box>
       <Header />
 
       <Box mx={"20%"} mt={8}>
         <Stack spacing={4}>
-          <Text>Hi, my name is</Text>
-          <Heading color={"#CCD8F8"}>
-            {name.split("").map((char, index) => (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            // transition={{ delay: 2 }}
+          >
+            <Text color={"teal.300"}>Hi, my name is</Text>
+          </motion.div>
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+          >
+            <Heading color={"#CCD8F8"}>Ajibade Emmanuel.</Heading>
+          </motion.div>
+          <Heading color={"#8892B0"}>
+            {text.split("").map((char, index) => (
               <motion.span
                 key={index}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: index * 0.09 }}
+                transition={{ delay: index * 0.2 }}
               >
                 {char}
               </motion.span>
             ))}
-          </Heading>
-          <Heading color={"#8892B0"}>
-            I build exciting stuffs for the web
           </Heading>
           <Text color={"#828BAD"} maxW={400}>
             I am a passionate and detail-oriented Software Developer, with about
@@ -36,7 +46,7 @@ export default function HomePage() {
             applications, and also creating scalable Nodejs servers.
           </Text>{" "}
           <Button
-            // mt={4}
+            mt={4}
             // ml={4}
             rounded={"none"}
             p={6}
