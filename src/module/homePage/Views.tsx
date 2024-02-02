@@ -1,14 +1,31 @@
 import { Box, Button, HStack, Heading, Stack, Text } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
 import Header from "./components/Navbar";
+const MotionBox = motion(Box);
 export default function HomePage() {
+  const [isToggled, setIsToggled] = useState(false);
+  const name = "Ajibade Emmanuel";
   return (
     <Box>
       <Header />
-      <Box mx={"20%"}>
+
+      <Box mx={"20%"} mt={8}>
         <Stack spacing={4}>
-          <Text color={"teal.200"}>Hi, my name is</Text>
-          <Heading color={"#CCD8F8"}>Ajibade Emmanuel.</Heading>
+          <Text>Hi, my name is</Text>
+          <Heading color={"#CCD8F8"}>
+            {name.split("").map((char, index) => (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: index * 0.09 }}
+              >
+                {char}
+              </motion.span>
+            ))}
+          </Heading>
           <Heading color={"#8892B0"}>
             I build exciting stuffs for the web
           </Heading>

@@ -22,10 +22,11 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-// import { signIn, signOut, useSession } from 'next-auth/react';
-import { usePathname } from "next/navigation";
 
-// import { useLoggedInContext } from '../../../component/layout/AuthContext';
+import { motion } from "framer-motion";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import myImage from "../../../../public/ajy.jpg";
 interface NavItem {
   label: string;
   subLabel?: string;
@@ -65,6 +66,30 @@ const NAV_ITEMS: Array<NavItem> = [
     number: "05.",
   },
 ];
+
+const variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+    },
+  },
+};
+
+const images = {
+  hidden: {
+    opacity: 0,
+    x: 30,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 1,
+    },
+  },
+};
 export default function Nav() {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -76,12 +101,27 @@ export default function Nav() {
         justify={"space-between"}
       >
         <Flex
-          mt={"2%"}
+          mt={"1%"}
           flex={{ base: 1 }}
           justify={{ base: "start", md: "start" }}
         >
-          <Box>img</Box>
-          <Text>Ajibade Emmanuel</Text>
+          <motion.div
+            variants={variants}
+            initial="hidden"
+            animate="show"
+            className="w-10 h-10 rounded-full overflow-hidden aspect-w-1 aspect-h-1"
+          >
+            <Image
+              src={myImage}
+              alt="Ajibade Emmanuel"
+              width={100}
+              height={50}
+            />
+          </motion.div>
+
+          {/* <Box>
+            <Avatar name="Ajibade Emmanuel" size={"sm"} src={myImage} />
+          </Box> */}
         </Flex>
         <Flex display={{ base: "none", md: "flex" }}>
           <DesktopNav />
@@ -134,7 +174,12 @@ const DesktopNav = () => {
   return (
     <Stack direction={"row"} spacing={4}>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label} px={2}>
+        <Box
+          as={motion.div}
+          whileHover={{ scale: 1.1 }}
+          key={navItem.label}
+          px={2}
+        >
           <Popover trigger={"hover"} placement={"bottom-start"}>
             <PopoverTrigger>
               <Link
@@ -142,10 +187,9 @@ const DesktopNav = () => {
                 href={navItem.href ?? "#"}
                 fontSize={"sm"}
                 fontWeight={500}
-                color={"white"}
+                // color={"#7E95B8"}
                 // color={linkColor}
                 _hover={{
-                  textDecoration: "none",
                   color: "teal",
                 }}
                 _active={{
@@ -153,13 +197,18 @@ const DesktopNav = () => {
                 }}
               >
                 <HStack>
-                  <Text color={"teal.300"} mr={-1}>
+                  <Text color={"#4FCFCF"} mr={-1}>
                     {navItem.number}
                   </Text>
-                  <Text>{navItem.label}</Text>
+                  <Text
+                    fontWeight={path === navItem.href ? "bold" : ""}
+                    color={path === navItem.href ? "white" : "#8893BD"}
+                  >
+                    {navItem.label}
+                  </Text>
                 </HStack>
                 {/* {`${path}` === navItem.href ? (
-                  <Box
+                Box
                     bg="black"
                     marginLeft={6}
                     borderRadius="50%"
@@ -287,7 +336,7 @@ const MobileNavItem = ({ label, children, href, number }: NavItem) => {
         justify={"space-between"}
         align={"center"}
         _hover={{
-          backgroundColor: '',
+          backgroundColor: "",
           textDecoration: "none",
         }}
       >
@@ -323,61 +372,6 @@ const MobileNavItem = ({ label, children, href, number }: NavItem) => {
             ))}
         </Stack>
       </Collapse>
-    </Stack>
-  );
-};
-
-const SelectAndContact = () => {
-  // const {data:session, status} = useSession()
-
-  // console.log(session)
-  const { isOpen, onOpen, onClose } = useDisclosure();
-  function logout() {
-    localStorage.removeItem("token");
-
-    const token = localStorage.getItem("token");
-    console.log(token);
-  }
-  //  console.log(isLoggedIn)
-  return (
-    <Stack
-      flex={{ base: 1, md: 0 }}
-      justify={"flex-start"}
-      direction={"row"}
-      spacing={6}
-    >
-      {/* {isLoggedIn ?
-      <Box onClick={onOpen} cursor="pointer" _hover={{ textDecoration: "underline" }}> 
-        <Text fontWeight={500} mt={2}>signOut</Text>
-      </Box>
-      :
-      <Link href='auth/sign-in'> <Text fontWeight={500} mt={2}>Login</Text></Link>
-      } */}
-
-      {/* <p>{session.user.message}</p> */}
-      <button>Sign Out</button>
-
-      <button className="hidden md:inline-flex text-sm font-semibold py-2  px-3 h-10 text-white bg-teal-900 hover:bg-#1CA5AE rounded-md">
-        Contact
-      </button>
-
-      {/* <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Logout?</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              <Heading>Are you sure you want to log out</Heading>
-            </ModalBody>
-  
-            <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant='ghost' onClick={logout}>Secondary Action</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal> */}
     </Stack>
   );
 };
