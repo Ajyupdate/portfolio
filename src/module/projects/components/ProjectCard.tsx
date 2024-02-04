@@ -54,6 +54,7 @@ export default function ProjectCard({ projects }: iProjectProps) {
       <VStack spacing={16}>
         {projects.map((project) => (
           <Link
+            target="_blank"
             key={project.id}
             href={project.url}
             _hover={{ textDecoration: "none" }}
