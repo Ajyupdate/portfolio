@@ -53,8 +53,8 @@ const NAV_ITEMS: Array<NavItem> = [
   },
 
   {
-    label: "Project",
-    href: "/project",
+    label: "Projects",
+    href: "/projects",
     number: "02.",
     icon: FaCode,
   },
