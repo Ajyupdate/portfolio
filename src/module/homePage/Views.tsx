@@ -11,7 +11,7 @@ export default function HomePage() {
     <Box>
       <Header />
 
-      <Box mx={"20%"} mt={8}>
+      <Box mx={{ md: "20%", base: "8%" }} mt={8}>
         <Stack spacing={4}>
           <motion.div
             initial={{ opacity: 0 }}
