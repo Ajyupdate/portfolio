@@ -61,7 +61,7 @@ export default function ProjectCard({ projects }: iProjectProps) {
             <Grid
               mb={4}
               _hover={{ bg: "#153461", p: 4 }}
-              templateColumns="1fr 3fr"
+              templateColumns={{ md: "1fr 2fr", base: "1fr" }}
               gap={2}
             >
               <GridItem colSpan={1}>

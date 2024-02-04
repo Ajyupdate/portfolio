@@ -54,7 +54,7 @@ export default function ProjectPage() {
     <Box>
       <Header />
 
-      <Box mx={"20%"}>
+      <Box mx={{ md: "20%", base: "8%" }}>
         <Heading color={"white"}>Projects</Heading>
         <Text color={"#8893BD"} mt={"2%"}>
           Some interesting project I built
