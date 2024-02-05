@@ -30,10 +30,15 @@ export default function ArticleCard({ articles }: iArticleCardProps) {
 
   return (
     <Box>
-      <Grid mb={4} templateColumns={{ md: "2fr 2fr", base: "1fr" }} gap={10}>
+      <Grid
+        templateColumns={{ md: "2fr 2fr", base: "1fr" }}
+        bg={"#0A192F"}
+        gap={10}
+        pb={12}
+      >
         {articles.map((article, index) => (
           <Link href={article.url} target="_blank" key={article.id}>
-            <Box>
+            <Box position="relative">
               <Box
                 position="relative"
                 overflow="hidden"
@@ -44,40 +49,42 @@ export default function ArticleCard({ articles }: iArticleCardProps) {
                 <Box
                   transition="filter 1s"
                   _hover={{
-                    filter: hoveredIndex === index ? "brightness(10%)" : "none",
+                    filter: hoveredIndex === index ? "brightness(30%)" : "none",
                   }}
+                  width="100%" // Ensure the image takes up the entire space
+                  height="100%"
                 >
-                  <Box width="381px" height="215px" position="relative">
+                  <Box position="relative" width="100" height="300">
                     <Image
                       src={article.imageUrl}
                       alt={article.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{ objectFit: "cover" }}
                     />
-                    <Box
-                      as={motion.div}
-                      initial={{ opacity: 0, x: -50 }}
-                      animate={{
-                        opacity: hoveredIndex === index ? 1 : 0,
-                        x: hoveredIndex === index ? 0 : -50,
-                      }}
-                      transition={{ duration: "0.3" }}
-                      position="absolute"
-                      bottom="10px"
-                      left="0"
-                      textAlign="left"
-                      pointerEvents="none"
-                      px={4}
-                      maxWidth="80%"
-                      borderRadius="md"
-                    >
-                      <Text color="white" fontSize="sm">
-                        {article.content}
-                      </Text>
-                    </Box>
                   </Box>
                 </Box>
 
+                <Box
+                  as={motion.div}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{
+                    opacity: hoveredIndex === index ? 1 : 0,
+                    x: hoveredIndex === index ? 0 : -50,
+                  }}
+                  transition={{ duration: "0.3" }}
+                  position="absolute"
+                  bottom="10px"
+                  left="0"
+                  textAlign="left"
+                  pointerEvents="none"
+                  px={4}
+                  borderRadius="md"
+                  width="100%" // Ensure the content box spans the entire width
+                >
+                  <Text color="#CCD6F6" fontSize="sm">
+                    {article.content}
+                  </Text>
+                </Box>
                 <Box
                   position="absolute"
                   top="4px"
@@ -87,7 +94,9 @@ export default function ArticleCard({ articles }: iArticleCardProps) {
                   <Icon as={FaExternalLinkAlt} color="white" fontSize="xl" />
                 </Box>
               </Box>
-              <Text color="white">{article.title}</Text>
+              <Text mt={{ md: 4, base: 2 }} color="white">
+                {article.title}
+              </Text>
             </Box>
           </Link>
         ))}
