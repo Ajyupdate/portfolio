@@ -15,6 +15,7 @@ interface iArticlesProperties {
   title: string;
   content: string;
   url: string;
+  source: string;
 }
 
 export default function ArticleCard({ articles }: iArticleCardProps) {
@@ -86,6 +87,19 @@ export default function ArticleCard({ articles }: iArticleCardProps) {
                   </Text>
                 </Box>
                 <Box
+                  p={4}
+                  position="absolute"
+                  top="4px"
+                  left="4px"
+                  display={hoveredIndex === index ? "block" : "none"}
+                >
+                  <button className="border border-white text-white px-4 py-2 rounded">
+                    {article.source}
+                  </button>
+                </Box>
+
+                <Box
+                  p={4}
                   position="absolute"
                   top="4px"
                   right="4px"
