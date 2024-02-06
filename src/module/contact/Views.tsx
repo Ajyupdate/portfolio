@@ -6,6 +6,7 @@ import fix2 from "../../../public/fix2.webp";
 import orm from "../../../public/orm-sequelize.jpg";
 import Header from "../homePage/components/Navbar";
 import SocialsCard from "./components/SocialsCard";
+import ContactForm from "./components/contactForm";
 const socials = [
   {
     id: 1,
@@ -64,7 +65,7 @@ export default function Contact() {
           Search interesting content from chat gpt
         </Text>
         <Flex justifyContent={"flex-start"} mb={8}>
-          <Box flexDirection={"row"} p={1}>
+          <Box flexDirection={"row"}>
             <button
               onClick={() => handleTabClick("tab1")}
               className={`px-4 text-white py-1 font-medium rounded ${
@@ -95,7 +96,10 @@ export default function Contact() {
         )}
         {activeTab === "tab2" && (
           <div>
-            <p>Content for Contact.</p>
+            <Text fontSize="large" color={"white"}>
+              Send me a mail
+            </Text>{" "}
+            <ContactForm />
           </div>
         )}
       </Box>
