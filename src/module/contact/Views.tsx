@@ -1,16 +1,17 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
 import { useState } from "react";
-import oop from "../../../public/OOP.jpg";
-import fix1 from "../../../public/fix1.webp";
-import fix2 from "../../../public/fix2.webp";
-import orm from "../../../public/orm-sequelize.jpg";
+import facebook from "../../../public/WhatsApp Image 2024-02-06 at 9.20.08 PM.jpeg";
+import github from "../../../public/github.jpeg";
+import instagagram from "../../../public/instagram.jpeg";
+import linkedin from "../../../public/linkedIn.jpeg";
+import twitter from "../../../public/twitter.jpeg";
 import Header from "../homePage/components/Navbar";
 import SocialsCard from "./components/SocialsCard";
 import ContactForm from "./components/contactForm";
 const socials = [
   {
     id: 1,
-    imageUrl: orm,
+    imageUrl: twitter,
     title: "X(formerly Twitter)",
     content: "",
     url: "https://twitter.com/Ajy_update",
@@ -18,7 +19,7 @@ const socials = [
   },
   {
     id: 2,
-    imageUrl: fix1,
+    imageUrl: linkedin,
     title: "Linkedin ",
     content: "",
     url: "https://www.linkedin.com/in/ajibade-emmanuel-411916178/",
@@ -26,7 +27,7 @@ const socials = [
   },
   {
     id: 3,
-    imageUrl: oop,
+    imageUrl: github,
     title: "Github",
     content: "",
     url: "https://github.com/Ajyupdate",
@@ -34,7 +35,7 @@ const socials = [
   },
   {
     id: 4,
-    imageUrl: fix2,
+    imageUrl: instagagram,
     title: "Instagram",
     content: " ",
     url: "https://www.instagram.com/ajy_update/",
@@ -42,7 +43,7 @@ const socials = [
   },
   {
     id: 5,
-    imageUrl: fix2,
+    imageUrl: facebook,
     title: "Facebook",
     content: " ",
     url: "https://www.facebook.com/adetomiwa.emmanuel",

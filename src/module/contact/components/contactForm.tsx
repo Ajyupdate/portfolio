@@ -8,11 +8,12 @@ import {
   Grid,
   Input,
   Textarea,
+  useToast,
 } from "@chakra-ui/react";
 import { Field, Form, Formik } from "formik";
 import { useState } from "react";
 import { object, string } from "yup";
-
+// import route from "../../../app/api/mail";
 interface FormValues {
   name: string;
   email: string;
@@ -32,14 +33,37 @@ const validationSchema = object().shape({
 });
 
 const ContactForm: React.FC = () => {
+  const toast = useToast();
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const handleSubmit = async (values: FormValues, { resetForm }: any) => {
     setIsSubmitting(true);
     // Simulate async form submission
-    setTimeout(() => {
+    setTimeout(async () => {
       console.log(values);
-      resetForm();
-      setIsSubmitting(false);
+
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+      if (response.status == 200) {
+        toast({
+          title: "Success",
+          description: "Message Sent successf",
+          status: "success",
+          duration: 2000,
+          isClosable: true,
+        });
+        resetForm();
+        setIsSubmitting(false);
+      } else {
+        toast({
+          title: "Error.",
+          description: "Unable to send mail",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
     }, 1000);
   };
 
