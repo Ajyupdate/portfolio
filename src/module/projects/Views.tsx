@@ -1,5 +1,5 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
-import Batman from "../../../public/batman.png";
+import Batman from "../../../public/Batman.png";
 import event from "../../../public/event.png";
 import evr from "../../../public/evr.png";
 import fintech from "../../../public/fintech.png";
