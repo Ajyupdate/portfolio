@@ -25,12 +25,13 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { IconType } from "react-icons";
 import { CiHome } from "react-icons/ci";
 import { FaBookReader, FaCode } from "react-icons/fa";
 import { FaEnvelopeOpenText } from "react-icons/fa6";
 import { IoServer } from "react-icons/io5";
+
 import myImage from "../../../../public/ajy.jpg";
 interface NavItem {
   label: string;
@@ -102,6 +103,7 @@ const images = {
   },
 };
 export default function Nav() {
+  const router = useRouter();
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -143,6 +145,7 @@ export default function Nav() {
           </Flex>
           <Flex display={{ base: "none", md: "flex" }}>
             <DesktopNav />
+
             <Button
               mt={4}
               ml={4}
@@ -150,7 +153,9 @@ export default function Nav() {
               borderColor="teal.200"
               variant="outline"
             >
-              Resume
+              <a href="/ajibade.pdf" download="ajibade.pdf">
+                Resume
+              </a>
             </Button>
           </Flex>
 
