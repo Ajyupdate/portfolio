@@ -7,7 +7,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 interface iProjectProps {
   projects: iProjectProperties[];
@@ -43,6 +43,7 @@ const images = {
   },
 };
 export default function ProjectCard({ projects }: iProjectProps) {
+  const { scrollYProgress } = useScroll();
   return (
     <Box
       as={motion.div}
