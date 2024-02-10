@@ -1,4 +1,12 @@
-import { Box, Button, HStack, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  HStack,
+  Heading,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
@@ -40,10 +48,11 @@ export default function HomePage() {
             ))}
           </Heading>
           <Text color={"#828BAD"} maxW={400}>
-            I am a passionate and detail-oriented Software Developer, with about
-            four years of learning and writing codes, using my self-taught
-            skills to developing dynamic and user-friendly web and mobile
-            applications, and also creating scalable Nodejs servers.
+            I am a passionate and detail-oriented Software Developer. I thrive
+            on crafting elegant solutions to complex problems. Whether it is
+            building sleek web applications, scaleble servers or solving complex
+            mathematical equations. every line of my code represents my
+            imaginative wonders.
           </Text>{" "}
           <Button
             mt={4}
@@ -55,12 +64,14 @@ export default function HomePage() {
             variant="outline"
             maxW="200px"
           >
-            <HStack>
-              <Text>Send a Message</Text>
-              <Text mt={1}>
-                <FaAngleRight />
-              </Text>
-            </HStack>
+            <Link href="/contact">
+              <HStack>
+                <Text>Send a Message</Text>
+                <Text mt={1}>
+                  <FaAngleRight />
+                </Text>
+              </HStack>
+            </Link>
           </Button>
         </Stack>
       </Box>

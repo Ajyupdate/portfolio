@@ -1,4 +1,5 @@
 import { Box, Flex, Heading, Text } from "@chakra-ui/react";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import facebook from "../../../public/WhatsApp Image 2024-02-06 at 9.20.08 PM.jpeg";
 import github from "../../../public/github.jpeg";
@@ -92,7 +93,16 @@ export default function Contact() {
         </Flex>
         {activeTab === "tab1" && (
           <div>
-            <SocialsCard socails={socials} />
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 5, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ delay: 0.25, duration: 0.5 }}
+              >
+                <SocialsCard socails={socials} />
+              </motion.div>
+            </AnimatePresence>
           </div>
         )}
         {activeTab === "tab2" && (
@@ -100,7 +110,16 @@ export default function Contact() {
             <Text fontSize="large" color={"white"}>
               Send me a mail
             </Text>{" "}
-            <ContactForm />
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 5, y: 0 }}
+                exit={{ opacity: 0, y: 15 }}
+                transition={{ delay: 0.25, duration: 0.5 }}
+              >
+                <ContactForm />
+              </motion.div>
+            </AnimatePresence>
           </div>
         )}
       </Box>
