@@ -1,27 +1,15 @@
 "use client";
 import HomePage from "@/module/homePage/Views";
+import { store } from "@/store";
 import { Box } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
-
+import { Provider } from "react-redux";
 export default function Home() {
-  // function binarySearch(array, target) {
-  //   let left = 0;
-  //   let right = array.length - 1;
-  //   const mid = (left + right) / 2;
-
-  //   while (left <= right) {
-  //     if (array[mid] == target) {
-  //       return mid;
-  //     } else if (array[mid] > target) {
-  //       right = mid - 1;
-  //     } else {
-  //       left = mid + 1;
-  //     }
-  //   }
-  //   return -1;
-  // }
-
-  // binarySearch([2, 3, 4, 5, 6, 7], 5);
+  // const booleanValue = useSelector((state) => state.boolean.value);
+  // const dispatch = useDispatch();
+  // const handleButtonClick = () => {
+  //   dispatch(toggleState()); // Dispatch the toggleState action when the button is clicked
+  // };
   return (
     <AnimatePresence>
       <motion.div
@@ -31,7 +19,11 @@ export default function Home() {
         transition={{ delay: 0.25, duration: 0.5 }}
       >
         <Box>
-          <HomePage />
+          {/* <button onClick={handleButtonClick}>Toggle State</button>
+          <p>Boolean State: {booleanValue ? "true" : "false"}</p> */}
+          <Provider store={store}>
+            <HomePage />
+          </Provider>
         </Box>
       </motion.div>
     </AnimatePresence>

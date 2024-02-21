@@ -1,3 +1,4 @@
+import { toggleState } from "@/slices/mode";
 import {
   Box,
   Button,
@@ -8,17 +9,30 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import { FaAngleRight } from "react-icons/fa6";
+import { useDispatch, useSelector } from "react-redux";
 import Header from "./components/Navbar";
 const MotionBox = motion(Box);
 export default function HomePage() {
-  const [isToggled, setIsToggled] = useState(false);
-  const text = "I build exciting stuffs for the web.";
-  return (
-    <Box>
-      <Header />
+  // const [isToggled, setIsToggled] = useState(false);
+  // const booleanValue = useSelector((state) => state.boolean.value);
+  // const dispatch = useDispatch();
+  // const handleButtonClick = () => {
+  //   dispatch(toggleState()); // Dispatch the toggleState action when the button is clicked
+  // };
+  const isToggled = useSelector((state) => state.toggle.isToggled);
+  const dispatch = useDispatch();
 
+  const handleToggle = () => {
+    dispatch(toggleState());
+  };
+  const text = "I build exciting stuffs for the web.";
+
+  return (
+    <Box bg={isToggled ? "white" : "#0A192F"} color={isToggled ? "black" : ""}>
+      <Header />
+      <button onClick={handleToggle}>Toggle State</button>
+      <p>Boolean State: {isToggled ? "true" : "false"}</p>
       <Box mx={{ md: "20%", base: "8%" }} mt={8}>
         <Stack spacing={4}>
           <motion.div
