@@ -62,9 +62,15 @@ export default function ProjectCard({ projects }: iProjectProps) {
           >
             <Grid
               mb={4}
-              _hover={{ bg: "#153461", p: 4 }}
+              _hover={{
+                bg: "#153461",
+                borderRadius: "md",
+                p: 4,
+                transition: "padding 1.5s ease",
+              }}
               templateColumns={{ md: "1fr 2fr", base: "1fr" }}
               gap={2}
+              transition="background-color 0.3s ease"
             >
               <GridItem colSpan={1}>
                 <Box borderRadius="md" overflow="hidden">

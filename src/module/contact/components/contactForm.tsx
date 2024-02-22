@@ -101,6 +101,7 @@ const ContactForm: React.FC = () => {
             </FormControl>
           </Grid>
           <FormControl
+            mt={8}
             id="message"
             isInvalid={!!(errors.message && touched.message)}
           >
