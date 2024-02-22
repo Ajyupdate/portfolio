@@ -125,12 +125,14 @@ export default function Nav() {
               animate="show"
               className="w-10 h-10 rounded-full overflow-hidden aspect-w-1 aspect-h-1"
             >
-              <Image
-                src={myImage}
-                alt="Ajibade Emmanuel"
-                width={100}
-                height={50}
-              />
+              <Link href="/">
+                <Image
+                  src={myImage}
+                  alt="Ajibade Emmanuel"
+                  width={100}
+                  height={50}
+                />
+              </Link>
             </motion.div>
 
             <Box ml={4} display={{ md: "none", base: "block" }}>

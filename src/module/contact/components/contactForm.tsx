@@ -48,7 +48,7 @@ const ContactForm: React.FC = () => {
       if (response.status == 200) {
         toast({
           title: "Success",
-          description: "Message Sent successf",
+          description: "Message Sent successfully",
           status: "success",
           duration: 2000,
           isClosable: true,
@@ -73,7 +73,7 @@ const ContactForm: React.FC = () => {
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
-      {({ errors, touched, isSubmitting }) => (
+      {({ errors, touched }) => (
         <Form>
           <Grid
             mt={2}
@@ -108,13 +108,6 @@ const ContactForm: React.FC = () => {
             <Field color="white" name="message" as={Textarea} h="250px" />
             <FormErrorMessage>{errors.message}</FormErrorMessage>
           </FormControl>{" "}
-          {/* <Box p={4}>
-            <Flex justify="flex-end">
-              <button className="border border-white text-white px-8 py-2 rounded-full hover:bg-blue-500">
-                Submit
-              </button>
-            </Flex>
-          </Box> */}
           <Button
             mt={4}
             w={"100%"}
