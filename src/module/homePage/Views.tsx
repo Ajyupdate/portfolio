@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Container,
   HStack,
   Heading,
   Link,
@@ -19,8 +20,8 @@ export default function HomePage() {
     <Box>
       <Header />
 
-      <Box mx={{ md: "20%", base: "8%" }} mt={8}>
-        <Stack spacing={4}>
+      <Container mt={8}>
+        <Stack spacing={4} mx={{ base: "3%", md: "unset" }}>
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -74,7 +75,7 @@ export default function HomePage() {
             </Link>
           </Button>
         </Stack>
-      </Box>
+      </Container>
     </Box>
   );
 }
