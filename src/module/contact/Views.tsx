@@ -64,7 +64,7 @@ export default function Contact() {
       <Box mx={{ md: "20%", base: "8%" }}>
         <Heading color={"white"}>Contact</Heading>
         <Text color={"#8893BD"} mt={"2%"} mb={8}>
-          Search interesting content from chat gpt
+          You can reach me through the following media
         </Text>
         <Flex justifyContent={"flex-start"} mb={8}>
           <Box flexDirection={"row"}>
